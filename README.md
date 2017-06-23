@@ -1,7 +1,7 @@
 # Migrate Remove
 
-Drupal 8 Module that removes database polution added by Migrate modules.  This
-module was written by David Lohmeyer.
+Drupal 8 Module that removes database polution added by Migrate modules.  The code in
+this module was written by David Lohmeyer.
 
 http://www.lohmeyer.rocks/blog/2017/06/20/0085-clean-database-pollution-migrate-drupal-module
 
