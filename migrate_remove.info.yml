@@ -3,4 +3,3 @@ type: module
 description: Removes database polution added by Migrate modules -David Lohmeyer.
 core: 8.x
 package: Migration
-version: 1.0

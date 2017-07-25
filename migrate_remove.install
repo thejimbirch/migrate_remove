@@ -1,12 +1,16 @@
 <?php
+
+/**
+ * @file
+ * Removes stale migration configs during uninstall.
+ */
+
 /**
  * Implements hook_uninstall().
- *
- * Removes stale migration configs during uninstall.
  */
 function migrate_remove_uninstall() {
 
-  // Clean up database pollution
+  // Clean up database pollution.
   $tables_to_cleanup = [
     'migrate_message_',
     'migrate_map_',
@@ -18,16 +22,16 @@ function migrate_remove_uninstall() {
   foreach ($schema as $table_name) {
     $table_name = (Array) $table_name;
     $table_name = reset($table_name);
-    foreach($tables_to_cleanup as $table_to_cleanup) {
-      if(strpos($table_name, $table_to_cleanup) !== false) {
+    foreach ($tables_to_cleanup as $table_to_cleanup) {
+      if (strpos($table_name, $table_to_cleanup) !== FALSE) {
         db_drop_table($table_name);
       }
     }
   }
 
-  // Clean up old migrate configuration
+  // Clean up old migrate configuration.
   $query = db_select('config', 'c')
-    ->fields('c', array('name'))
+    ->fields('c', ['name'])
     ->condition('name', db_like('migrate_plus.') . '%', 'LIKE')
     ->execute();
 
